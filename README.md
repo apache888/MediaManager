@@ -1,4 +1,4 @@
-# MediaMeneger
+# MediaManager
 Media manager with CRUD operations in database
 
 Программа настроена работать на MySQL
