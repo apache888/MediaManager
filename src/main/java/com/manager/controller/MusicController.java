@@ -33,7 +33,7 @@ public class MusicController implements Controller<Music> {
     }
 
     @Override
-    public List<Music> onGetAllByStatus(String status) {
+    public List<Music> onGetAllByStatus(int status) {
         return musicDao.getAllByStatus(status);
     }
 
@@ -43,7 +43,7 @@ public class MusicController implements Controller<Music> {
     }
 
     @Override
-    public void onUpdateStatus(int id, String status) {
+    public void onUpdateStatus(int id, int status) {
         musicDao.updateStatus(id, status);
     }
 }

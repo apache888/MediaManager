@@ -20,8 +20,8 @@ public class Movie {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "status")
-    @Enumerated(EnumType.STRING)
+    @Column(name = "status_id")
+    @Enumerated(EnumType.ORDINAL)
     private MovieStatus status = MovieStatus.WANT_TO_WATCH;
 
     public Movie() {

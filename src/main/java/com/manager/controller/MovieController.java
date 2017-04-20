@@ -33,7 +33,7 @@ public class MovieController implements Controller<Movie> {
     }
 
     @Override
-    public List<Movie> onGetAllByStatus(String status) {
+    public List<Movie> onGetAllByStatus(int status) {
         return movieDao.getAllByStatus(status);
     }
 
@@ -43,7 +43,7 @@ public class MovieController implements Controller<Movie> {
     }
 
     @Override
-    public void onUpdateStatus(int id, String status) {
+    public void onUpdateStatus(int id, int status) {
         movieDao.updateStatus(id, status);
     }
 }

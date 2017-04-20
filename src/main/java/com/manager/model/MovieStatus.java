@@ -8,7 +8,8 @@ package com.manager.model;
  * Class describes statuses of entity Movie
  */
 public enum MovieStatus {
-    WATCHED,
+
     WANT_TO_WATCH,
-    AM_WATCHING
+    AM_WATCHING,
+    WATCHED
 }

@@ -8,8 +8,9 @@ package com.manager.model;
  * Class describes statuses of entity Book
  */
 public enum BookStatus {
-    READ,
+
     WANT_TO_READ,
-    AM_READING
+    AM_READING,
+    READ
 
 }

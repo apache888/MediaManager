@@ -55,10 +55,10 @@ public class MusicDaoImpl implements MediaDao<Music> {
     }
 
     @Override
-    public List<Music> getAllByStatus(String status) {
+    public List<Music> getAllByStatus(int status) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        List<Music> musicList = session.createQuery("from Music where status= :status", Music.class).setParameter("status", MusicStatus.valueOf(status)).getResultList();
+        List<Music> musicList = session.createQuery("from Music where status= :status", Music.class).setParameter("status", MusicStatus.values()[status]).getResultList();
         session.getTransaction().commit();
         return musicList;
     }
@@ -78,12 +78,12 @@ public class MusicDaoImpl implements MediaDao<Music> {
     }
 
     @Override
-    public void updateStatus(int id, String status) {
+    public void updateStatus(int id, int status) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         try {
             Music music = session.get(Music.class, id);
-            music.setStatus(MusicStatus.valueOf(status));
+            music.setStatus(MusicStatus.values()[status]);
             session.update(music);
             session.flush();
             session.getTransaction().commit();

@@ -54,12 +54,12 @@ public class BookDaoImpl implements MediaDao<Book> {
     }
 
     @Override
-    public void updateStatus(int id, String status) {
+    public void updateStatus(int id, int status) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         try {
             Book book = session.get(Book.class, id);
-            book.setStatus(BookStatus.valueOf(status));
+            book.setStatus(BookStatus.values()[status]);
             session.update(book);
             session.flush();
             session.getTransaction().commit();
@@ -70,10 +70,10 @@ public class BookDaoImpl implements MediaDao<Book> {
     }
 
     @Override
-    public List<Book> getAllByStatus(String status) {
+    public List<Book> getAllByStatus(int status) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        List<Book> books = session.createQuery("from Book where status= :status", Book.class).setParameter("status", BookStatus.valueOf(status)).getResultList();
+        List<Book> books = session.createQuery("from Book where status= :status", Book.class).setParameter("status", BookStatus.values()[status]).getResultList();
         session.getTransaction().commit();
         return books;
     }

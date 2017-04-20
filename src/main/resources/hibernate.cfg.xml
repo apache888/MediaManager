@@ -5,13 +5,16 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.dialect">
-            org.hibernate.dialect.MySQLDialect
+            <!--org.hibernate.dialect.MySQLDialect-->
+            org.hibernate.dialect.H2Dialect
         </property>
         <property name="hibernate.connection.driver_class">
-            com.mysql.cj.jdbc.Driver
+            <!--com.mysql.cj.jdbc.Driver-->
+            org.h2.Driver
         </property>
         <!-- Echo all executed SQL to stdout -->
-        <property name="show_sql">true</property>
+        <property name="show_sql">false</property>
+        <property name="format_sql">false</property>
         <property name="hibernate.ejb.naming_strategy">
             org.hibernate.cfg.ImprovedNamingStrategy
         </property>
@@ -19,13 +22,16 @@
 
         <!--DB settings-->
         <property name="hibernate.connection.url">
-            jdbc:mysql://localhost/media_storage?useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC&amp;useSSL=false
+            <!--jdbc:mysql://localhost/media_storage?useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC&amp;useSSL=false-->
+            <!--jdbc:h2:file:./resources/db/media_storage-->
+            jdbc:h2:file:./media_storage;IFEXISTS=TRUE;AUTO_SERVER=TRUE;TRACE_LEVEL_FILE=0;
         </property>
         <property name="hibernate.connection.username">
-            root
+            <!--root-->
+            sa
         </property>
         <property name="hibernate.connection.password">
-            root
+            <!--root-->
         </property>
 
         <!-- List of Entities mapping files -->

@@ -33,7 +33,7 @@ public class BookController implements Controller<Book> {
     }
 
     @Override
-    public List<Book> onGetAllByStatus(String status) {
+    public List<Book> onGetAllByStatus(int status) {
         return bookDao.getAllByStatus(status);
     }
 
@@ -43,7 +43,7 @@ public class BookController implements Controller<Book> {
     }
 
     @Override
-    public void onUpdateStatus(int id, String status) {
+    public void onUpdateStatus(int id, int status) {
         bookDao.updateStatus(id, status);
     }
 }

@@ -54,8 +54,8 @@ public class BookView implements View {
 
     @Override
     public void fireEventGetAllByStatus() {
-        String status = selectStatus();
-        writeAll(controller.onGetAllByStatus(status.toUpperCase()));
+        int status = selectStatus();
+        writeAll(controller.onGetAllByStatus(status));
     }
 
     @Override
@@ -68,26 +68,28 @@ public class BookView implements View {
     @Override
     public void fireEventUpdateStatus() {
         int id = inputId();
-        String status = selectStatus();
-        controller.onUpdateStatus(id, status.toUpperCase());
+        int status = selectStatus();
+        controller.onUpdateStatus(id, status);
     }
 
     /**
      * select status by console dialog
      * @return String status
      */
-    private String selectStatus() {
-        String status;
+    private int selectStatus() {
+        int status;
         while (true) {
             try {
                 ConsoleHelper.writeToConsole("Select status:\n");
-                for (BookStatus bookStatus : BookStatus.values()) {
-                    ConsoleHelper.writeToConsole(bookStatus.toString());
-                }
-                status = ConsoleHelper.readString();
+                ConsoleHelper.writeToConsole(String.format("\t %d - WANT_TO_READ", BookStatus.WANT_TO_READ.ordinal()));
+                ConsoleHelper.writeToConsole(String.format("\t %d - AM_READING", BookStatus.AM_READING.ordinal()));
+                ConsoleHelper.writeToConsole(String.format("\t %d - READ", BookStatus.READ.ordinal()));
+                status = Integer.parseInt(ConsoleHelper.readString());
                 break;
             } catch (IOException e) {
                 ConsoleHelper.writeToConsole("Failed input. Try again");
+            } catch (NumberFormatException e) {
+                ConsoleHelper.writeToConsole("Wrong integer. Try again");
             }
         }
         return status;

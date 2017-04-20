@@ -55,10 +55,10 @@ public class MovieDaoImpl implements MediaDao<Movie> {
     }
 
     @Override
-    public List<Movie> getAllByStatus(String status) {
+    public List<Movie> getAllByStatus(int status) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        List<Movie> movies = session.createQuery("from Movie where status= :status", Movie.class).setParameter("status", MovieStatus.valueOf(status)).getResultList();
+        List<Movie> movies = session.createQuery("from Movie where status= :status", Movie.class).setParameter("status", MovieStatus.values()[status]).getResultList();
         session.getTransaction().commit();
         return movies;
     }
@@ -78,12 +78,12 @@ public class MovieDaoImpl implements MediaDao<Movie> {
     }
 
     @Override
-    public void updateStatus(int id, String status) {
+    public void updateStatus(int id, int status) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         try {
             Movie movie = session.get(Movie.class, id);
-            movie.setStatus(MovieStatus.valueOf(status));
+            movie.setStatus(MovieStatus.values()[status]);
             session.update(movie);
             session.flush();
             session.getTransaction().commit();

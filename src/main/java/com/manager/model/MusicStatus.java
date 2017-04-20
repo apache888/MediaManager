@@ -8,7 +8,8 @@ package com.manager.model;
  * Class describes statuses of entity Music
  */
 public enum MusicStatus {
-    LISTENED,
+
     WANT_TO_LISTEN,
-    AM_LISTENING
+    AM_LISTENING,
+    LISTENED
 }

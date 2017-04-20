@@ -20,8 +20,8 @@ public class Music {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "status")
-    @Enumerated(EnumType.STRING)
+    @Column(name = "status_id")
+    @Enumerated(EnumType.ORDINAL)
     private MusicStatus status = MusicStatus.WANT_TO_LISTEN;
 
     public Music() {

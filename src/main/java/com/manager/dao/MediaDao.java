@@ -35,7 +35,7 @@ public interface MediaDao<T> {
      * iltered by status
      * @return List<T>
      */
-    List<T> getAllByStatus(String status);
+    List<T> getAllByStatus(int status);
 
     /**
      * receive type T object by id from database
@@ -49,6 +49,6 @@ public interface MediaDao<T> {
      * @param id - Entity id
      * @param status - new status
      */
-    void updateStatus(int id, String status);
+    void updateStatus(int id, int status);
 
 }

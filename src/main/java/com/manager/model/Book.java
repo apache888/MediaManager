@@ -21,8 +21,8 @@ public class Book {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "status")
-    @Enumerated(EnumType.STRING)
+    @Column(name = "status_id")
+    @Enumerated(EnumType.ORDINAL)
     private BookStatus status = BookStatus.WANT_TO_READ;
 
 

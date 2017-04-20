@@ -37,7 +37,7 @@ public interface Controller<T> {
      * filtered by status
      * @return List<T>
      */
-    List<T> onGetAllByStatus(String status);
+    List<T> onGetAllByStatus(int status);
 
     /**
      * handles event to receive entity by id from database
@@ -51,6 +51,6 @@ public interface Controller<T> {
      * @param id - Entity id
      * @param status - new status
      */
-    void onUpdateStatus(int id, String status);
+    void onUpdateStatus(int id, int status);
 
 }
